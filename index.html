@@ -1,74 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meal Planner Website</title>
-    <link rel="icon" type="image/jpg" href="download.jpg" />
-     <link rel="stylesheet" href="styles.css">
-    <script src="App.js" defer></script>
-  </head>
-
-  <body>
-    <div class="mealContainer">
-      <div class="nav">
-        <nav>
-          <!-- <link rel="icon" type="image/jpg" href="icon.jpg"> -->
-          <img src="icon.jpg" alt="image" />
-          <span>Meal Planner </span>
-        </nav>
-      </div>
-
-      <form>
-        <div class="input1">
-          <input
-            type="number"
-            min="0"
-            placeholder="Enter Height (in cm)"
-            id="height"
-          />
-          <input
-            type="number"
-            placeholder="Enter Weight (in kgs.)"
-            min="0"
-            id="weight"
-          />
-          <input
-            type="number"
-            placeholder="Enter Age (in yrs.)"
-            min="0"
-            id="age"
-          />
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://kit.fontawesome.com/3988e44910.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <title>Meal Planner</title>
+        <link rel="icon" type="image/x-icon" href="./image/iconimg.jpg" width="100%" >
+        <script src="./App.js" defer></script>
+    </head>
+<body>
+     <!-- Header section -->
+     <header id="header">
+        <a href="#"><img src="./image/iconimg.jpg" class="logo" alt=""><span class="text">Meal Planner</span></a>
+        <div>
+            <ul id="nav-bar">
+                <li><a href="index.html" class="active">Recipes<i class="fa-solid fa-plus head-icon"></i></a></li>
+                <li><a href="shop.html">Course<i class="fa-solid fa-plus head-icon"></i></a></li>
+                <li><a href="blog.html">Season<i class="fa-solid fa-plus head-icon"></i></a></li>
+                <li><a href="about.html">Method<i class="fa-solid fa-plus head-icon"></i></a></li>
+                <li><a href="contact.html">Meal Prep<i class="fa-solid fa-plus head-icon"></i></a></li>
+                <!-- <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-cart-plus head-icon"></i></a></li> -->
+                <a href="#" id="close"><i class="fa-solid fa-x"></i></a>
+            </ul>
         </div>
-        <div class="input2">
-          <input type="text" placeholder="Enter Gender" id="gender" />
-          <select name="base" id="activity">
-            <option>Activity Level</option>
-            <option value="light">Light</option>
-            <option value="moderate">Moderate</option>
-            <option value="active">Active</option>
-          </select>
+        <div id="mobile">
+            <!-- <a href="cart.html"><i class="fa-solid fa-cart-plus"></i></a> -->
+            <i id="bar" class="fas fa-outdent"></i>
         </div>
-        <div class="button">
-          <button type="button" id="btn">Generate Meal</button>
+    </header>
+    <!-- data form validation -->
+    <div class="form-header">
+            <h2>Put your diet on autopilot</h2>
         </div>
-      </form>
-
-      <div class="chart">
-        <div class="card-box"></div>
-      </div>
-
-      <div class="ingrediants">
-        <span>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum,
-          aliquid! Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Illum, aliquid! Lorem ipsum dolor sit, amet consectetur adipisicing
-          elit. Illum, aliquid! Lorem ipsum dolor sit, amet consectetur
-          adipisicing elit. Illum, aliquid! Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Illum, aliquid!
-        </span>
-      </div>
+    <div class="container">
+        <form action="" class="form" id="form">
+            <div class="formDesign" id="form">
+                <label>Height :</label>
+                <input
+                type="number"
+                name="height" 
+                id="height" 
+                placeholder="Enter Height(in cm)" 
+                autocomplete="off"
+                minlength="0"
+                maxlength="3"
+                >
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>Error Msg</small>
+            </div>
+            <div class="formDesign" id="form">
+                <label>Weight :</label>
+                <input                
+                type="number" 
+                name="weight" 
+                id="weight" 
+                placeholder="Enter Weight(in Kg)"
+                autocomplete="off"
+                minlength="0"
+                maxlength="3"
+                >
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>Error Msg</small>
+            </div>
+            <div class="formDesign" id="form">
+                <label>Age :</label>
+                <input 
+                type="number" 
+                name="age" 
+                id="age" 
+                placeholder="Enter Age" 
+                autocomplete="off"
+                >
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>Error Msg</small>
+            </div>
+            <div class="formDesign" id="form">
+                <label>  
+                    Gender:   
+                    </label>  
+                    <br>  
+                    <select id="gender">
+                        <option value="">Gender</option>
+                        <option value="">Male</option>
+                        <option value="">Female</option>
+                    </select>
+            </div>
+            <div class="formDesign" id="form">
+            <label>  
+                Physical Activity:   
+            </label>  <br>  
+            <select name="base" id="activity">
+                <option>Activity Level</option>
+                <option value="">Light</option>
+                <option value="">Moderate</option>
+                <option value="">Active</option>
+            </select>
+            </div>
+           <button type="submit" class="normal" onclick="generateMeal()">Generate Meal</button>
+        </form>
     </div>
-  </body>
+    <div class="d-flex flex-row d-flex flex-wrap justify-content-center align-items-center" id="cart">
+        <!-- <div class="card" style="width: 18rem; margin: 40px;">
+            <img class="card-img-top" src="./image/img1.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">BreakFast</h5>
+                <p class="card-text"><span style="font-weight: 600;">Meal 1</span><br>Calorie - 300</p>
+                <a href="#" class="btn btn-primary" style="background-color: #f0754f; border: none;">Get Recipes</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem; margin: 40px;">
+                <img class="card-img-top" src="./image/img1.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Lunch</h5>
+                    <p class="card-text"><span style="font-weight: 600;">Meal 2</span><br>Calorie - 300</p>
+                    <a href="#" class="btn btn-primary"style="background-color: #f0754f; border: none;">Get Recipes</a>
+                </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="./image/img1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Dinner</h5>
+                        <p class="card-text"><span style="font-weight: 600;">Meal 3</span><br>Calorie - 300</p>
+                        <a href="#" class="btn btn-primary" style="background-color: #f0754f; border: none;">Get Recipes</a>
+                    </div>
+                    </div> -->
+    </div>
+  
+</body>
 </html>
