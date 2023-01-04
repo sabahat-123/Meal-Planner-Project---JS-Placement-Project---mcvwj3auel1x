@@ -34,81 +34,85 @@
             <i id="bar" class="fas fa-outdent"></i>
         </div>
     </header>
+    <!-- DISPLAY__CONTAINER -->
+    <div class="display_container">
     <!-- data form validation -->
-    <div class="form-header">
+        <div class="form-header">
             <h2>Put your diet on autopilot</h2>
         </div>
-    <div class="container">
-        <form action="" class="form" id="form">
-            <div class="formDesign" id="form">
-                <label>Height :</label>
-                <input
-                type="number"
-                name="height" 
-                id="height" 
-                placeholder="Enter Height(in cm)" 
-                autocomplete="off"
-                minlength="0"
-                maxlength="3"
-                >
-                <i class="fa-solid fa-circle-check"></i>
-                <i class="fa-solid fa-circle-exclamation"></i>
-                <small>Error Msg</small>
-            </div>
-            <div class="formDesign" id="form">
-                <label>Weight :</label>
-                <input                
-                type="number" 
-                name="weight" 
-                id="weight" 
-                placeholder="Enter Weight(in Kg)"
-                autocomplete="off"
-                minlength="0"
-                maxlength="3"
-                >
-                <i class="fa-solid fa-circle-check"></i>
-                <i class="fa-solid fa-circle-exclamation"></i>
-                <small>Error Msg</small>
-            </div>
-            <div class="formDesign" id="form">
-                <label>Age :</label>
-                <input 
-                type="number" 
-                name="age" 
-                id="age" 
-                placeholder="Enter Age" 
-                autocomplete="off"
-                >
-                <i class="fa-solid fa-circle-check"></i>
-                <i class="fa-solid fa-circle-exclamation"></i>
-                <small>Error Msg</small>
-            </div>
-            <div class="formDesign" id="form">
+        <section class="form_details">
+            <form action="" class="form" id="form">
+                <div class="formDesign" id="form">
+                    <label>Height :</label>
+                    <input
+                    type="number"
+                    name="height" 
+                    id="height" 
+                    placeholder="Enter Height(in cm)" 
+                    autocomplete="off"
+                    minlength="0"
+                    maxlength="3"
+                    >
+                    <i class="fa-solid fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error Msg</small>
+                </div>
+                <div class="formDesign" id="form">
+                    <label>Weight :</label>
+                    <input                
+                    type="number" 
+                    name="weight" 
+                    id="weight" 
+                    placeholder="Enter Weight(in Kg)"
+                    autocomplete="off"
+                    minlength="0"
+                    maxlength="3"
+                    >
+                    <i class="fa-solid fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error Msg</small>
+                </div>
+                <div class="formDesign" id="form">
+                    <label>Age :</label>
+                    <input 
+                    type="number" 
+                    name="age" 
+                    id="age" 
+                    placeholder="Enter Age" 
+                    autocomplete="off"
+                    >
+                    <i class="fa-solid fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error Msg</small>
+                </div>
+                <div class="formDesign" id="form">
+                    <label>  
+                        Gender:   
+                        </label>  
+                        <br>  
+                        <select id="gender">
+                            <option value="">Gender</option>
+                            <option value="">Male</option>
+                            <option value="">Female</option>
+                        </select>
+                </div>
+                <div class="formDesign" id="form">
                 <label>  
-                    Gender:   
-                    </label>  
-                    <br>  
-                    <select id="gender">
-                        <option value="">Gender</option>
-                        <option value="">Male</option>
-                        <option value="">Female</option>
-                    </select>
-            </div>
-            <div class="formDesign" id="form">
-            <label>  
-                Physical Activity:   
-            </label>  <br>  
-            <select name="base" id="activity">
-                <option>Activity Level</option>
-                <option value="">Light</option>
-                <option value="">Moderate</option>
-                <option value="">Active</option>
-            </select>
-            </div>
-           <button type="submit" class="normal" onclick="generateMeal()">Generate Meal</button>
-        </form>
-    </div>
-    <div class="d-flex flex-row d-flex flex-wrap justify-content-center align-items-center" id="cart">
+                    Physical Activity:   
+                </label>  <br>  
+                <select name="base" id="activity">
+                    <option>Activity Level</option>
+                    <option value="">Light</option>
+                    <option value="">Moderate</option>
+                    <option value="">Active</option>
+                </select>
+                </div>
+               <button type="submit" class="normal" onclick="generateMeal()">Generate Meal</button>
+            </form>
+        </section>
+    <!-- meal card section  -->
+    <section class="meals__container d-flex flex-row d-flex flex-wrap justify-content-center align-items-center" id="meals__container">
+ 
         <!-- <div class="card" style="width: 18rem; margin: 40px;">
             <img class="card-img-top" src="./image/img1.jpg" alt="Card image cap">
             <div class="card-body">
@@ -133,7 +137,39 @@
                         <a href="#" class="btn btn-primary" style="background-color: #f0754f; border: none;">Get Recipes</a>
                     </div>
                     </div> -->
-    </div>
-  
+    </section>
+    <!-- Recipes table section -->
+    <section class="recipe__container" id="recipie__container">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+    </section>
+    
+    
+      
+</div>
 </body>
 </html>

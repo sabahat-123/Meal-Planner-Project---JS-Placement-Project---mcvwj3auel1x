@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -152,25 +153,24 @@ button.white{
 #close{
     display: none;
 }
-/* <!-- data form validation --> */
+/* <!-- display_container --> */
+.display_container{
+    margin: auto;
+    background-color: #e3e6f3;
+    max-width: 1200px;
+    min-height: 150vh;
+}
 .form-header{
     text-align: center;
     text-transform: uppercase;
     padding-top: 30px;
 }
-.container{
-    margin-top: 50px;
+.form_details{
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #e3e6f3;
-    border-radius: 10px;
-    overflow: hidden;
-    width: calc(100vw - 65vw);
-    max-width: 100%;
-}
-.form{
-    padding: 40px;
+    margin-top: 150px;
 }
 .formDesign{
     margin-bottom: 20px;
@@ -236,6 +236,13 @@ select{
 select option {
     margin-left: 20px;
 }
+section{
+    margin-top: 50px;
+}
+/* recipe section */
+.recipe__container{
+    margin-top: 50px;
+}
 
   /* Media Query */
 
@@ -286,10 +293,15 @@ select option {
         text-transform: lowercase;
         font-size: 15px;
     }
-
-    .container{
-        width: calc(100vw - 35vw);
-       
-    
+    .logo{
+     visibility: hidden;
+   
+    }
+    #header {
+        padding-left: 0px;
+    }
+    .text{
+        color: #f0754f;
+        font-weight: 900;
     }
 }
