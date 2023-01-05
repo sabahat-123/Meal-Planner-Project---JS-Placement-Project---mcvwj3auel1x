@@ -13,9 +13,7 @@ if(close){
     })
 }
 // create variable  
-const height = document.getElementById("height");
-const weight = document.getElementById("weight");
-const age = document.getElementById("age");
+
 const gender = document.getElementById("gender");
 const activity = document.getElementById("activity");
 const form = document.getElementById("form");
@@ -33,39 +31,47 @@ const apiKey ="2cd2da308f344968b58bb7de9aaa706b";
 //form validation
 form.addEventListener("submit" ,generateMeal)
 // calcutating BMR
-async function calBMR(weight,height,age){
-    let bmrMale = 66.47 + (13.75 * weight) + (5.003 *height) - (6.755 * age);
-    let bmrFemale =  655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age);
-    if(gender.value ==="male" && activity.value==="Light"){
-        let calories = bmrMale*1.375;
+let bmrMale =0;
+let bmrFemale=0;
+let calories =0;
+async function calBMR(){
+const height = document.getElementById("height").value;
+const weight = document.getElementById("weight").value;
+const age = document.getElementById("age").value;
+     bmrMale = 66.47 + (13.75 * weight) + (5.003 *height) - (6.755 * age);
+     bmrFemale =  655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age);
+    if(gender.value =="male" && activity.value=="light"){
+         calories = bmrMale*1.375;
         console.log(calories);
     }
-    else if(gender.value ==="male" && activity.value==="Moderate"){
-        let calories = bmrMale*1.55;
+    else if(gender.value =="male" && activity.value=="moderate"){
+         calories = bmrMale*1.55;
         console.log(calories);
     }
-    else if(gender.value ==="male" && activity.value==="Active"){
-        let calories = bmrMale*1.725;
+    else if(gender.value =="male" && activity.value=="active"){
+        calories = bmrMale*1.725;
         console.log(calories);
     }
-    else if(gender.value ==="Female" && activity.value==="Light"){
-        let calories = bmrFemale*1.375;
+    else if(gender.value =="female" && activity.value=="light"){
+         calories = bmrFemale*1.375;
         console.log(calories);
         
     }
-    else if(gender.value ==="Female" && activity.value==="Moderate"){
-        let calories = bmrFemale*1.55;
+    else if(gender.value =="female" && activity.value=="moderate"){
+        calories = bmrFemale*1.55;
         console.log(calories);
     }
     else{
-        let calories = bmrFemale*1.725;
+        calories = bmrFemale*1.725;
         console.log(calories); 
     }
    
 }
+
 //generate the meals
 function generateMeal(event){
     event.preventDefault();
+    calBMR();
     const url =`https://api.spoonacular.com/mealplanner/generate?apiKey=${apiKey}&timeFrame=day`;
 
     newCard.innerHTML="";
@@ -87,7 +93,7 @@ function generateMeal(event){
         <img class="card-img-top" src="${link_img[i]}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">${mealName}</h5>
-            <p class="card-text"><span style="font-weight: 600;">${data.meals[i].title}</span><br>calories :<br>
+            <p class="card-text"><span style="font-weight: 600;">${data.meals[i].title}</span><br>calories :${calories.toFixed(0)}<br>
             </p>
             <a href="#" class="btn btn-primary" style="background-color: #f0754f; border: none;" onclick="getRecipe(${data.meals[i].id})">Get Recipes</a>
         </div>
@@ -103,26 +109,32 @@ function generateMeal(event){
 
 }
 
-
+        
 // function for fetch recipie
 async function getRecipe(id){
     console.log(id);
     const recipie =`https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}&includeNutrition=false`;
     fetch(recipie).then((response)=>response.json()).then((getMeal)=>{
-        let newSec = document.createElement('section');
-         const table_str =` <table class="table table-striped">
-         <thead>
-           <tr>
-             <th scope="col"> Ingredients</th>
-             <th scope="col">steps</th>
-             <th scope="col">Equipment</th>
-           </tr>
-         </thead>
-       </table>`
-       newSec.innerHTML = table_str;
-       recipe_container.appendChild(newSec);
-        console.log(getMeal);
+        const thead = document.getElementById("create_thead");
+        const create_tr = document.createElement("tr");
+        const table_str =` 
+            <th scope="col"> Ingredients</th>
+            <th scope="col">steps</th>
+            <th scope="col">Equipment</th>`;
+        create_tr.innerHTML = table_str;
+        thead.appendChild(create_tr);
+        console.log(getMeal.extendedIngredients[0]);
+        for(let k=0;k< getMeal.extendedIngredients.length;k++){
+          const create =document.createElement("tr");
+          const tbody=document.getElementById("create_tbody");
+          const recipe_script=`<td>${getMeal.extendedIngredients[k].name}</td>
+          <td></td>
+          <td>${getMeal.extendedIngredients[k].measures.metric.amount}${getMeal.extendedIngredients[k].unit}</td>`;
+          create.innerHTML=recipe_script;
+          tbody.appendChild(create);
+       }
     }).catch((error)=>{
         console.log(error);
     })
 }
+
