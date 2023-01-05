@@ -239,6 +239,21 @@ select option {
 section{
     margin-top: 50px;
 }
+/* card section */
+.card:hover
+{
+  box-shadow: 2px 2px 3px 3px rgba(170, 169, 169, 0.355),-2px -2px 3px 3px rgba(170, 169, 169, 0.355);
+  
+}
+.card-title{
+    color: #f0754f;
+}
+.card-body {
+    background-color: black;
+}
+.card-text{
+    color: #fff;
+}
 /* recipe section */
 .recipe__container{
     margin-top: 50px;
@@ -303,5 +318,6 @@ section{
     .text{
         color: #f0754f;
         font-weight: 900;
+        
     }
 }
