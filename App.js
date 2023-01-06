@@ -28,8 +28,10 @@ const link_img = [breakFast_img,lunch_img,dinner_img];
 //api key
 const apiKey ="2cd2da308f344968b58bb7de9aaa706b";
 // https://api.spoonacular.com/mealplanner/generate?apiKey=2cd2da308f344968b58bb7de9aaa706b&timeFrame=day
+
 //form validation
 form.addEventListener("submit" ,generateMeal)
+
 // calcutating BMR
 let bmrMale =0;
 let bmrFemale=0;
@@ -95,7 +97,7 @@ function generateMeal(event){
             <h5 class="card-title">${mealName}</h5>
             <p class="card-text"><span style="font-weight: 600;">${data.meals[i].title}</span><br>calories :${calories.toFixed(0)}<br>
             </p>
-            <a href="#" class="btn btn-primary" style="background-color: #f0754f; border: none;" onclick="getRecipe(${data.meals[i].id})">Get Recipes</a>
+            <a class="btn btn-primary" style="background-color: #f0754f; border: none;" onclick="getRecipe(${data.meals[i].id})">Get Recipes</a>
         </div>
         </div>`;
      
@@ -113,28 +115,44 @@ function generateMeal(event){
 // function for fetch recipie
 async function getRecipe(id){
     console.log(id);
+    recipe_container.innerHTML = "";
     const recipie =`https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}&includeNutrition=false`;
     fetch(recipie).then((response)=>response.json()).then((getMeal)=>{
-        const thead = document.getElementById("create_thead");
-        const create_tr = document.createElement("tr");
+        const table= document.createElement("table");
+        const thead = document.createElement("thead");
+        const tr = document.createElement("tr");
         const table_str =` 
             <th scope="col"> Ingredients</th>
             <th scope="col">steps</th>
             <th scope="col">Equipment</th>`;
-        create_tr.innerHTML = table_str;
-        thead.appendChild(create_tr);
-        console.log(getMeal.extendedIngredients[0]);
-        for(let k=0;k< getMeal.extendedIngredients.length;k++){
-          const create =document.createElement("tr");
-          const tbody=document.getElementById("create_tbody");
-          const recipe_script=`<td>${getMeal.extendedIngredients[k].name}</td>
-          <td></td>
-          <td>${getMeal.extendedIngredients[k].measures.metric.amount}${getMeal.extendedIngredients[k].unit}</td>`;
-          create.innerHTML=recipe_script;
-          tbody.appendChild(create);
-       }
+            tr.innerHTML = table_str;
+            thead.appendChild(tr);
+            table.appendChild(thead);
+            const recipe = getMeal.extendedIngredients;
+            console.log(recipe);
+            const tbody = document.createElement("tbody");
+            recipe.forEach((e)=>{
+              const tr = document.createElement("tr");
+              const td1 = document.createElement("td");
+              td1.classList.add("table_td");
+              td1.innerHTML=e.name;
+              tr.appendChild(td1);
+              const td2 = document.createElement("td");
+              tr.appendChild(td2);
+              const td3 = document.createElement("td");
+              td3.innerHTML=e.measures.metric.amount + e.measures.metric.unitShort;
+              tr.appendChild(td3);
+              tbody.appendChild(tr);
+            })
+            table.appendChild(tbody);
+            recipe_container.appendChild(table);
+            recipe_container.scrollIntoView({
+                behavior :"smooth"
+            })
+
     }).catch((error)=>{
         console.log(error);
     })
 }
+
 
